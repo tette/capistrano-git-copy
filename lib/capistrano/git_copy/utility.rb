@@ -73,6 +73,7 @@ module Capistrano
       #
       # @return void
       def fetch_revision
+        execute :git, 'checkout', fetch(:branch)
         capture(:git, 'rev-list', '--max-count=1', '--abbrev-commit', fetch(:branch)).strip
       end
 
